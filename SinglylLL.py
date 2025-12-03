@@ -18,8 +18,16 @@ class Singlylinkedlist:
         third.next=fourth
 
         self.head=first
+    #TRAVESTING LL
+    def print_list(self):
+        current=self.head
+        while current is not None:
+            print(current.data,end="-->")
+            current=current.next
+        print("None")
 sll=Singlylinkedlist()
 sll.build_list()
-print(sll.head.data )
+sll.print_list()
+print(sll.head.data)
 
 
