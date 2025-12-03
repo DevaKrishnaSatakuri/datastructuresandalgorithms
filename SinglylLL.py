@@ -6,6 +6,7 @@ class Node:
 class Singlylinkedlist:
     def __init__(self):
         self.head= None
+#NAIVE METHOD
     def build_list(self):
         first=Node(10)
         second=Node(20)
