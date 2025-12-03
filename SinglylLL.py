@@ -18,7 +18,7 @@ class Singlylinkedlist:
         third.next=fourth
 
         self.head=first
-    #TRAVESTING LL
+    #TRAVESTING & PRINTING IN A SLL
     def print_list(self):
         current=self.head
         while current is not None:
