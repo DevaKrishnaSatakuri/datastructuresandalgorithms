@@ -1,3 +1,6 @@
+from multiprocessing.spawn import prepare
+
+
 class Node:
     def __init__(self, data):
         self.data=data
@@ -81,6 +84,31 @@ class Singlylinkedlist:
             current.next=new_node
         self.size+=1
 
+    #DELETE A NODE FROM THE BEGINNING
+    def delete_at_beginning(self):
+        if self.size==0:
+            return None
+        deleted_node=self.head
+        self.head=self.head.next
+        deleted_node.next=None
+        self.size-=1
+        return deleted_node
+
+    # DELETE A NODE FROM THE END
+    def delete_at_end(self):
+        if self.head==None:
+            return None
+        current=self.head
+        if current.next==None:
+            self.head=None
+        else:
+            previous=None
+            while current.next != None:
+                previous=current
+                current=current.next
+            previous.next=None
+        self.size-=1
+        return current
 
 sll=Singlylinkedlist()
 sll.insert_at_beginning(11)
@@ -88,7 +116,12 @@ sll.insert_at_beginning(12)
 sll.insert_at_beginning(-13)
 sll.insert_at_end(21)
 sll.insert_at_end(23)
-sll.inset_at_position(33,3)
+sll.inset_at_position(33,4)
+#-13-->12-->11-->21-->33-->23
+deleted_node=sll.delete_at_beginning() #-13
+deleted_node=sll.delete_at_beginning() #12
+deleted_node=sll.delete_at_end()
+print(deleted_node.data)
 sll.print_list()
 print("Len =",sll.get_size())
 
