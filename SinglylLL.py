@@ -11,7 +11,7 @@ class Singlylinkedlist:
         self.head= None
         self.size=0
 
-#NAIVE METHOD
+# INSERTING NODES (NAIVE METHOD)N
   #  def build_list(self):
   #     first=Node(10)
   #     second=Node(20)
@@ -32,7 +32,7 @@ class Singlylinkedlist:
             current=current.next
         print("None")
 
-    # SIZE OF THE SLL
+    # SIZE OF THE SLL (MANUAL)
 #    def size(self):
 #       current=self.head
 #        count=0
@@ -110,6 +110,24 @@ class Singlylinkedlist:
         self.size-=1
         return current
 
+    # DELETE AT ANY POSITION
+    def delete_at_postion(self,position):
+        if position<0:
+            return None
+        if position>self.size:
+            return None
+        if position==0:
+            self.head=self.head.next
+        else:
+            current=self.head
+            counter=0
+            while counter<position-1:
+                current=current.next
+                counter+=1
+            current.next=current.next.next
+        self.size-=1
+
+
 sll=Singlylinkedlist()
 sll.insert_at_beginning(11)
 sll.insert_at_beginning(12)
@@ -118,10 +136,10 @@ sll.insert_at_end(21)
 sll.insert_at_end(23)
 sll.inset_at_position(33,4)
 #-13-->12-->11-->21-->33-->23
-deleted_node=sll.delete_at_beginning() #-13
-deleted_node=sll.delete_at_beginning() #12
-deleted_node=sll.delete_at_end()
-print(deleted_node.data)
+deleted_node_b=sll.delete_at_beginning() #-13
+deleted_node_e=sll.delete_at_end() #23
+print(deleted_node_b.data)
+sll.delete_at_postion(1)
 sll.print_list()
 print("Len =",sll.get_size())
 
