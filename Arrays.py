@@ -11,6 +11,7 @@ print("The element in array are:")
 for i in range (num):
     print(arr[i],end="")
 
+
 #CREATING A 2-D ARRAY
 r_num=int(input( "\nInput no. of rows: "))
 c_num=int(input("Input no. of columns: "))
