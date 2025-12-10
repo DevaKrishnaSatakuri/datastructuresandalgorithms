@@ -1,15 +1,16 @@
-#CREATING A 1-D ARRAY
+import array
+# #CREATING A 1-D ARRAY
 print("No of elements in the array",end="")
-num=input()
-arr=[]
-print("Enter",num,"Element",end="")
+num=int(input())
+arr=array.array("i",[])
+print("Enter", (num),"Element",end="")
 num=int(num)
 for i in range(num):
-    element=input()
+    element=int(input())
     arr.append(element)
 print("The elements in array are:")
 for i in range (num):
-    print(arr[i],end="")
+    print(arr[i],end=" ")
 
 
 #CREATING A 2-D ARRAY
@@ -21,7 +22,7 @@ for row in range(r_num):
         twod_arr[row][col]=row*col
 print(twod_arr)
 
-#DELETING AN ELEMENT IN AN ARRAY
+#DELETING AN ELEMENT IN AN ARRAY BY VALUE
 print(end="Size of the array : ")
 tot=int(input())
 arr=[]
@@ -38,9 +39,26 @@ if val in arr:
 else:
     print("\nElement doesn't exist in the array")
 
+#DELETING AN ELEMENT IN AN ARRAY BY INDEX
+print(end="Size of an array : ")
+tot=int(input())
+arr=[]
+print(end="Enter" +str(tot)+ "elements :")
+for i in range(tot):
+    arr.append(input())
+print("\nIndex to be deleted :")
+idx=int(input())
+if 0 <= idx < tot:
+    del arr[idx]
+    print("Modified array : ")
+    for i in range(len(arr)):
+        print(arr[i], end=" ")
+else:
+    print("\nInvalid index")
+
 
 #SORTING OF AN ARRAY (ASCENDING)
-arr=[10,40,30,60,55]
+arr=array.array("i",[10,5,12,75,1])
 temp=0
 
 print("Elements of original array : ")
@@ -70,4 +88,26 @@ for i in range(0, len(arr)):
     print(arr[i], end=" ")
 
 #SORTING OF AN ARRAY WITHOUT ASSIGNING A TEMPORARY VARIABLE
+#APPROACH 1
+for i in range(0, len(arr)):
+    for j in range(i+1, len(arr)):
+        if(arr[i]>arr[j]):
+            arr[i],arr[j]=arr[j],arr[i]
+print()
+print("Array in ascending order (approach 1) : ")
+for i in range(0, len(arr)):
+    print(arr[i], end=" ")
+
+#APPROACH 2
+for i in range(0, len(arr)):
+    for j in range(i+1, len(arr)):
+        if(arr[i]<arr[j]):
+            arr[i]=arr[i]+arr[j]
+            arr[j]=arr[i]-arr[j]
+            arr[i]=arr[i]-arr[j]
+print()
+print("Array in descending order:")
+for i in range(0, len(arr)):
+    print(arr[i], end=" ")
+
 
