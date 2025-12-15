@@ -82,6 +82,7 @@ class CircularQueue:
         else:
             new_node.next=self.rear.next
             self.rear.next=new_node
+            self.rear=new_node
 
 
 #REMOVING ELEMENTS
@@ -92,20 +93,37 @@ class CircularQueue:
        if self.rear == self.rear.next:
            self.rear=None
        else:
-           self.rear.next=self.rear.next.next
-           self.rear.next.next=self.rear.next
+           self.rear.next= self.rear.next.next
 
 
     def peek(self):
         if self.is_empty():
             return None
         print(self.rear.next.data)
+        return None
 
+    #PRINTING ELEMENTS
+    def display(self):
+        if self.is_empty():
+            return None
+        temp=self.rear.next
+        print("\r")
+        print("Circular Queue : ", end=" ")
+        while True:
+            print(temp.data, end=" ")
+            temp=temp.next
+            if temp==self.rear.next:
+                break
+        print()
 
 
 cq=CircularQueue()
 cq.enqueue(22)
 cq.enqueue(33)
 cq.enqueue(44)
+cq.enqueue(55)
+cq.enqueue(66)
+cq.enqueue(77)
 cq.dequeue()
 cq.peek()
+cq.display()
